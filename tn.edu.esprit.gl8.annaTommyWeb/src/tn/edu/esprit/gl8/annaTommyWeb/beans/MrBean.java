@@ -47,6 +47,14 @@ public class MrBean implements Serializable {
 
 	}
 
+	public String doUpdateUser() {
+
+		userServicesLocal.updateUser(player);
+		formOneVisibility = false;
+
+		return "";
+	}
+
 	public String doDeleteUser() {
 		userServicesLocal.deleteUserById(player.getId());
 		player = new Player();
