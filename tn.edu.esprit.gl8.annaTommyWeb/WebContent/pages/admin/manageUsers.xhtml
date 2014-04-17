@@ -2,11 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head></h:head>
 <body>
-
+<h:form id="form">
 	<h:dataTable border="1" value="#{beanbean.dataModel}" var="p">
 		<h:column id="column1">
 			<f:facet name="header">
@@ -24,31 +25,35 @@
 			<f:facet name="header">
 				<h:outputText value="#"></h:outputText>
 			</f:facet>
-			<h:form>
+			
 				<h:commandButton action="#{beanbean.selectPlayer()}" value="select" />
-			</h:form>
+			
 		</h:column>
 	</h:dataTable>
+</h:form>
 	<h:form>
 		<h:commandButton action="#{beanbean.modifyVisibility()}"
 			value="2 Add Player Please keep calm and push the button thank you" />
 	</h:form>
 	<h:form id="form1" rendered="#{beanbean.formOneVisibility}">
-		<h:panelGrid columns="2">
-			<h:outputText value="Name" />
-			<h:inputText value="#{beanbean.player.name}" />
-			<h:outputText value="Login" />
-			<h:inputText value="#{beanbean.player.login}" />
-			<h:outputText value="Password" />
-			<h:inputSecret value="#{beanbean.player.password}" />
-			<h:outputText value="Token" />
-			<h:inputText value="#{beanbean.player.token}" />
-			<h:commandButton action="#{beanbean.doAddUser()}" value="Add" />
-			<h:commandButton action="#{beanbean.doDeleteUser()}" value="Delete" />
+		<p:panel header="Create new user">
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Name" for="name"></p:outputLabel>
+				<p:inputText value="#{beanbean.player.name}" id="name" />
+				<p:outputLabel value="Login" for="login"></p:outputLabel>
+				<p:inputText value="#{beanbean.player.login}" id="login" />
+				<p:outputLabel for="password" value="Password" />
+				<p:password value="#{beanbean.player.password}" id="password"></p:password>
+				<p:outputLabel for="token" value="Token"></p:outputLabel>
+				<p:inputText value="#{beanbean.player.token}" id="token" />
+				<p:commandButton action="#{beanbean.doAddUser()}" value="Add" update="@all"/>
+				<p:commandButton action="#{beanbean.doDeleteUser()}" value="Delete" />
+				<p:commandButton action="#{beanbean.doUpdateUser()}" value="Update" />
 
 
 
-		</h:panelGrid>
+			</h:panelGrid>
+		</p:panel>
 	</h:form>
 
 

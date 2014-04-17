@@ -79,4 +79,12 @@ public class TestRealPlatform {
 
 	}
 
+	@Test
+	public void itShouldUpdatePlayer() {
+		Player playerFound = (Player) userServicesRemote.findUserById(3);
+		playerFound.setName("sofien look");
+		Assert.assertTrue(userServicesRemote.updateUser(playerFound));
+
+	}
+
 }

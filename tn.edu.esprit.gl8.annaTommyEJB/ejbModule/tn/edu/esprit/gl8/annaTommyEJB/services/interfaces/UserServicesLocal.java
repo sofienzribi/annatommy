@@ -16,5 +16,9 @@ public interface UserServicesLocal {
 	List<Player> findAllPlayers();
 	
 	boolean deleteUserById(int id);
+	
+	boolean updateUser(User user);
+	
+	User findUserById(int id);
 
 }

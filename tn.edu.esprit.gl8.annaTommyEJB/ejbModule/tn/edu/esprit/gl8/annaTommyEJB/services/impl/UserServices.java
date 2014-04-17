@@ -74,4 +74,23 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 		return b;
 	}
 
+	@Override
+	public boolean updateUser(User user) {
+
+		boolean b = false;
+		try {
+			entityManager.merge(user);
+			b = true;
+		} catch (Exception e) {
+			System.err.println("emmmmm3.........");
+		}
+		return b;
+	}
+
+	@Override
+	public User findUserById(int id) {
+
+		return entityManager.find(User.class, id);
+	}
+
 }

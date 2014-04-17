@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
@@ -15,7 +15,7 @@ import tn.edu.esprit.gl8.annaTommyEJB.domain.User;
 import tn.edu.esprit.gl8.annaTommyEJB.services.interfaces.UserServicesLocal;
 
 @ManagedBean(name = "beanbean")
-@SessionScoped
+@ViewScoped
 public class MrBean implements Serializable {
 
 	/**
@@ -43,8 +43,17 @@ public class MrBean implements Serializable {
 	public String doAddUser() {
 		userServicesLocal.addUser(player);
 		formOneVisibility = false;
+		player = new Player();
 		return "";
 
+	}
+
+	public String doUpdateUser() {
+
+		userServicesLocal.updateUser(player);
+		formOneVisibility = false;
+
+		return "";
 	}
 
 	public String doDeleteUser() {
