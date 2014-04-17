@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<body>
+
+	<h:dataTable border="1" value="#{beanbean.dataModel}" var="p">
+		<h:column id="column1">
+			<f:facet name="header">
+				<h:outputText value="Name Player"></h:outputText>
+			</f:facet>
+			<h:outputText value="#{p.name}" />
+		</h:column>
+		<h:column id="column2">
+			<f:facet name="header">
+				<h:outputText value="Token"></h:outputText>
+			</f:facet>
+			<h:outputText value="#{p.token}" />
+		</h:column>
+		<h:column id="column3">
+			<f:facet name="header">
+				<h:outputText value="#"></h:outputText>
+			</f:facet>
+			<h:form>
+				<h:commandButton action="#{beanbean.doDeleteUser()}" value="select" />
+			</h:form>
+		</h:column>
+	</h:dataTable>
+	<h:form>
+		<h:commandButton action="#{beanbean.modifyVisibility()}"
+			value="2 Add Player Please keep calm and push the button thank you" />
+	</h:form>
+	<h:form id="form1" rendered="#{beanbean.formOneVisibility}">
+		<h:panelGrid columns="2">
+			<h:outputText value="Name" />
+			<h:inputText value="#{beanbean.player.name}" />
+			<h:outputText value="Login" />
+			<h:inputText value="#{beanbean.player.login}" />
+			<h:outputText value="Password" />
+			<h:inputSecret value="#{beanbean.player.password}" />
+			<h:outputText value="Token" />
+			<h:inputText value="#{beanbean.player.token}" />
+			<h:commandButton action="#{beanbean.doAddUser()}" value="Add" />
+
+
+
+		</h:panelGrid>
+	</h:form>
+
+
+</body>
+</html>

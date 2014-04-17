@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>login page</title>
+</h:head>
+<h:body>
+	<h1>please insert your credentials ...</h1>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="login" />
+			<h:inputText value="#{beanbean.user.login}" />
+			<h:outputText value="password" />
+			<h:inputSecret value="#{beanbean.user.password}" />
+			<h:commandButton value="login" action="#{beanbean.doLogin()}" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

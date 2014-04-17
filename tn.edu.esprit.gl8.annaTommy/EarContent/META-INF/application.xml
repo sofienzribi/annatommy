@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" id="Application_ID" version="6">
+  <display-name>tn.edu.esprit.gl8.annaTommy</display-name>
+  <module>
+    <web>
+      <web-uri>tn.edu.esprit.gl8.annaTommyWeb.war</web-uri>
+      <context-root>tn.edu.esprit.gl8.annaTommyWeb</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>tn.edu.esprit.gl8.annaTommyEJB.jar</ejb>
+  </module>
+</application>
