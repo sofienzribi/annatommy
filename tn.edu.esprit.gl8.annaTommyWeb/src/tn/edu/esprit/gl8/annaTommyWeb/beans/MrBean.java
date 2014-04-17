@@ -34,6 +34,12 @@ public class MrBean implements Serializable {
 	private UserServicesLocal userServicesLocal;
 
 	// the methods
+	public String selectPlayer() {
+		player = dataModel.getRowData();
+		formOneVisibility = true;
+		return "";
+	}
+
 	public String doAddUser() {
 		userServicesLocal.addUser(player);
 		formOneVisibility = false;
@@ -42,8 +48,9 @@ public class MrBean implements Serializable {
 	}
 
 	public String doDeleteUser() {
-		Player playerSelected = dataModel.getRowData();
-		userServicesLocal.deleteUserById(playerSelected.getId());
+		userServicesLocal.deleteUserById(player.getId());
+		player = new Player();
+		formOneVisibility = false;
 		return "";
 	}
 
