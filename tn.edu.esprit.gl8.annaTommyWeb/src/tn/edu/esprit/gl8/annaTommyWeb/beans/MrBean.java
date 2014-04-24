@@ -3,6 +3,7 @@ package tn.edu.esprit.gl8.annaTommyWeb.beans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -35,15 +36,17 @@ public class MrBean implements Serializable {
 
 	// the methods
 	public String selectPlayer() {
-		player = dataModel.getRowData();
+
 		formOneVisibility = true;
-		return "";
+		return null;
 	}
 
 	public String doAddUser() {
-		userServicesLocal.addUser(player);
+		userServicesLocal.updateUser(player);
 		formOneVisibility = false;
+		System.out.println("ok");
 		player = new Player();
+		init();
 		return "";
 
 	}
@@ -52,7 +55,7 @@ public class MrBean implements Serializable {
 
 		userServicesLocal.updateUser(player);
 		formOneVisibility = false;
-
+		init();
 		return "";
 	}
 
@@ -60,6 +63,7 @@ public class MrBean implements Serializable {
 		userServicesLocal.deleteUserById(player.getId());
 		player = new Player();
 		formOneVisibility = false;
+		init();
 		return "";
 	}
 
@@ -105,7 +109,6 @@ public class MrBean implements Serializable {
 	}
 
 	public List<Player> getPlayers() {
-		players = userServicesLocal.findAllPlayers();
 
 		return players;
 	}
@@ -129,6 +132,12 @@ public class MrBean implements Serializable {
 
 	public void setDataModel(DataModel<Player> dataModel) {
 		this.dataModel = dataModel;
+	}
+
+	@PostConstruct
+	public void init() {
+		players = userServicesLocal.findAllPlayers();
+
 	}
 
 }

@@ -6,9 +6,9 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head></h:head>
-<body>
+<h:body>
 	<h:form id="form">
-		<p:dataTable border="1" value="#{beanbean.dataModel}" var="p">
+		<p:dataTable border="1" value="#{beanbean.players}" var="p">
 			<p:column id="column1">
 				<f:facet name="header">
 					<h:outputText value="Name Player"></h:outputText>
@@ -26,37 +26,47 @@
 					<h:outputText value="#"></h:outputText>
 				</f:facet>
 
-				<h:commandButton action="#{beanbean.selectPlayer()}" value="select" />
+				<p:commandButton action="#{beanbean.selectPlayer()}" value="update"
+					update="@form" oncomplete="popup.show()">
+					<f:setPropertyActionListener target="#{beanbean.player}"
+						value="#{p}"></f:setPropertyActionListener>
+				</p:commandButton>
+				<p:commandButton action="#{beanbean.doDeleteUser()}" value="delete"
+					update="@form">
+					<f:setPropertyActionListener target="#{beanbean.player}"
+						value="#{p}"></f:setPropertyActionListener>
+				</p:commandButton>
 
 			</p:column>
 		</p:dataTable>
-	</h:form>
-	<h:form>
-		<h:commandButton action="#{beanbean.modifyVisibility()}"
+
+
+		<p:commandButton oncomplete="popup.show()"
 			value="2 Add Player Please keep calm and push the button thank you" />
+
+
+		<p:dialog widgetVar="popup" modal="true">
+			<p:panel header="Create new user">
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Name" for="name"></p:outputLabel>
+					<p:inputText value="#{beanbean.player.name}" id="name" />
+					<p:outputLabel value="Login" for="login"></p:outputLabel>
+					<p:inputText value="#{beanbean.player.login}" id="login" />
+					<p:outputLabel for="password" value="Password" />
+					<p:password value="#{beanbean.player.password}" id="password"></p:password>
+					<p:outputLabel for="token" value="Token"></p:outputLabel>
+					<p:inputText value="#{beanbean.player.token}" id="token" />
+					<p:commandButton action="#{beanbean.doAddUser()}" value="validate"
+						update="@form" oncomplete="popup.hide()" />
+
+
+
+
+				</h:panelGrid>
+			</p:panel>
+		</p:dialog>
 	</h:form>
-	<h:form id="form1" rendered="#{beanbean.formOneVisibility}">
-		<p:panel header="Create new user">
-			<h:panelGrid columns="2">
-				<p:outputLabel value="Name" for="name"></p:outputLabel>
-				<p:inputText value="#{beanbean.player.name}" id="name" />
-				<p:outputLabel value="Login" for="login"></p:outputLabel>
-				<p:inputText value="#{beanbean.player.login}" id="login" />
-				<p:outputLabel for="password" value="Password" />
-				<p:password value="#{beanbean.player.password}" id="password"></p:password>
-				<p:outputLabel for="token" value="Token"></p:outputLabel>
-				<p:inputText value="#{beanbean.player.token}" id="token" />
-				<p:commandButton action="#{beanbean.doAddUser()}" value="Add"
-					update="@all" />
-				<p:commandButton action="#{beanbean.doDeleteUser()}" value="Delete" />
-				<p:commandButton action="#{beanbean.doUpdateUser()}" value="Update" />
 
 
-
-			</h:panelGrid>
-		</p:panel>
-	</h:form>
-
-
-</body>
+</h:body>
 </html>
