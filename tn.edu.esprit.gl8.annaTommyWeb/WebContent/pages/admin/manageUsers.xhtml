@@ -7,30 +7,30 @@
 
 <h:head></h:head>
 <body>
-<h:form id="form">
-	<h:dataTable border="1" value="#{beanbean.dataModel}" var="p">
-		<h:column id="column1">
-			<f:facet name="header">
-				<h:outputText value="Name Player"></h:outputText>
-			</f:facet>
-			<h:outputText value="#{p.name}" />
-		</h:column>
-		<h:column id="column2">
-			<f:facet name="header">
-				<h:outputText value="Token"></h:outputText>
-			</f:facet>
-			<h:outputText value="#{p.token}" />
-		</h:column>
-		<h:column id="column3">
-			<f:facet name="header">
-				<h:outputText value="#"></h:outputText>
-			</f:facet>
-			
+	<h:form id="form">
+		<p:dataTable border="1" value="#{beanbean.dataModel}" var="p">
+			<p:column id="column1">
+				<f:facet name="header">
+					<h:outputText value="Name Player"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{p.name}" />
+			</p:column>
+			<p:column id="column2">
+				<f:facet name="header">
+					<h:outputText value="Token"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{p.token}" />
+			</p:column>
+			<p:column id="column3">
+				<f:facet name="header">
+					<h:outputText value="#"></h:outputText>
+				</f:facet>
+
 				<h:commandButton action="#{beanbean.selectPlayer()}" value="select" />
-			
-		</h:column>
-	</h:dataTable>
-</h:form>
+
+			</p:column>
+		</p:dataTable>
+	</h:form>
 	<h:form>
 		<h:commandButton action="#{beanbean.modifyVisibility()}"
 			value="2 Add Player Please keep calm and push the button thank you" />
@@ -46,7 +46,8 @@
 				<p:password value="#{beanbean.player.password}" id="password"></p:password>
 				<p:outputLabel for="token" value="Token"></p:outputLabel>
 				<p:inputText value="#{beanbean.player.token}" id="token" />
-				<p:commandButton action="#{beanbean.doAddUser()}" value="Add" update="@all"/>
+				<p:commandButton action="#{beanbean.doAddUser()}" value="Add"
+					update="@all" />
 				<p:commandButton action="#{beanbean.doDeleteUser()}" value="Delete" />
 				<p:commandButton action="#{beanbean.doUpdateUser()}" value="Update" />
 
